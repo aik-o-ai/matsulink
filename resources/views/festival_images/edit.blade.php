@@ -15,10 +15,7 @@
                 <input type="text" name="title" id="title" required>
             </div>
 
-            <div>
-                <label for="body">本文</label>
-                <textarea name="body" id="body" rows="3"></textarea>
-            </div>
+
 
             <button type="submit">更新する</button>
         </form>
