@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\FestivalImageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +29,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//イベント投稿処理
+Route::middleware('auth')->controller(EventController::class)->group(function () {
+    Route::get('/events/create', 'create')->name('events.create');
+    Route::post('/events', 'store')->name('events.store');
+});
+
 //画像投稿処理
-Route::middleware('auth')->group(function () {
-    Route::get('/festival_images/create/{event_id}', [FestivalImageController::class, 'create'])->name('festival.create'); //画像の投稿
-    Route::post('/festival_images', [FestivalImageController::class, 'store'])->name('festival.store'); //画像の処理
+Route::middleware('auth')->controller(FestivalImageController::class)->group(function () {
+    Route::get('/festival_images/create/{event_id}', 'create')->name('festival.create');
+    Route::post('/festival_images', 'store')->name('festival.store');
 });
 require __DIR__ . '/auth.php';
