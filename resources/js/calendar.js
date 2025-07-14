@@ -4,6 +4,7 @@ import axios from "axios";
 import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction"; // ← 追加
 
 // カレンダーを表示させたいタグのidを取得
 const calendarEl = document.getElementById("calendar");
@@ -13,7 +14,7 @@ const calendarEl = document.getElementById("calendar");
 if (calendarEl) {
     const calendar = new Calendar(calendarEl, {
         // プラグインの導入(import忘れずに)
-        plugins: [dayGridPlugin, timeGridPlugin],
+        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
 
         // カレンダー表示
         initialView: "dayGridMonth", // 最初に表示させるページの形式
@@ -38,13 +39,16 @@ if (calendarEl) {
                 alert("イベントの読み込みに失敗しました");
             },
         },
-
+        //日付クリック時に一覧ページへ移動
+        dateClick: function (info) {
+            console.log("日付クリック:", info.dateStr); // ログ確認用
+            window.location.href = `/events/date/${info.dateStr}`; // ← ✅ 修正
+        },
         //イベントクリック時に詳細ページへ移動
         eventClick: function (info) {
             const eventId = info.event.id; // LaravelのイベントID
             window.location.href = `/events/${eventId}`; // 詳細ページに遷移
         },
-        events: "/calendar/get",
     });
 
     // カレンダーのレンダリング

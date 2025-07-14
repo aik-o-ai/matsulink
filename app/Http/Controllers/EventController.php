@@ -59,12 +59,10 @@ class EventController extends Controller
         return view('calendars.calendar');
     }
     //カレンダーにイベントを表示
-    public function get()
+    public function get(): JsonResponse
     {
         $events = Event::select('id', 'title', 'start_date as start', 'end_date as end')->get();
-        return response()->json(
-            Event::select('id', 'title', 'start_date as start', 'end_date as end')->get()
-        );
-        return response()->json($formatted);
+
+        return response()->json($events);
     }
 }
