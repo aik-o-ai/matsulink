@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Http\JsonResponse;
 
 class EventController extends Controller
 {
@@ -50,5 +51,19 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
         return view('events.show', compact('event'));
+    }
+
+    //カレンダー表示
+    public function calendar()
+    {
+        return view('calendars.calendar');
+    }
+    //カレンダーにイベントを表示
+    public function get()
+    {
+        $events = Event::select('id', 'title', 'start_date as start', 'end_date as end')->get();
+        return response()->json(
+            Event::select('id', 'title', 'start_date as start', 'end_date as end')->get()
+        );
     }
 }

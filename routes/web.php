@@ -48,4 +48,9 @@ Route::get('/events/date/{date}', [EventController::class, 'listByDate'])->name(
 //イベント詳細ページ
 Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
 
+//カレンダー関連
+Route::get('/calendar', [EventController::class, 'calendar'])->name('calendar.show');
+Route::post('/calendar/get', [EventController::class, 'get'])->name('calendar.get');
+
+
 require __DIR__ . '/auth.php';
