@@ -65,5 +65,6 @@ class EventController extends Controller
         return response()->json(
             Event::select('id', 'title', 'start_date as start', 'end_date as end')->get()
         );
+        return response()->json($formatted);
     }
 }

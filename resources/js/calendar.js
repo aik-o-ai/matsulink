@@ -38,6 +38,13 @@ if (calendarEl) {
                 alert("イベントの読み込みに失敗しました");
             },
         },
+
+        //イベントクリック時に詳細ページへ移動
+        eventClick: function (info) {
+            const eventId = info.event.id; // LaravelのイベントID
+            window.location.href = `/events/${eventId}`; // 詳細ページに遷移
+        },
+        events: "/calendar/get",
     });
 
     // カレンダーのレンダリング

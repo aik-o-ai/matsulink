@@ -50,7 +50,9 @@ Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show'
 
 //カレンダー関連
 Route::get('/calendar', [EventController::class, 'calendar'])->name('calendar.show');
+Route::get('/calendar/get', [EventController::class, 'get'])->name('calendar.get');
 Route::post('/calendar/get', [EventController::class, 'get'])->name('calendar.get');
+
 
 
 require __DIR__ . '/auth.php';
