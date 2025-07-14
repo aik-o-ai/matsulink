@@ -41,4 +41,11 @@ Route::middleware('auth')->controller(FestivalImageController::class)->group(fun
     Route::get('/festival_images/create/{event_id}', 'create')->name('festival.create');
     Route::post('/festival_images', 'store')->name('festival.store');
 });
+
+//日付別一覧
+Route::get('/events/date/{date}', [EventController::class, 'listByDate'])->name('events.byDate');
+
+//イベント詳細ページ
+Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+
 require __DIR__ . '/auth.php';

@@ -34,6 +34,21 @@ class EventController extends Controller
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
         ]);
-        return redirect()->route('calendar.show')->with('success', 'イベントを投稿しました');
+        return redirect()->route('events.byDate', ['date' => $request->start_date])
+            ->with('success', 'イベントを投稿しました');
+    }
+
+    //日付別にイベントを取得
+    public function listByDate($date)
+    {
+        $events = Event::where('start_date', $date)->get();
+        return view('events.by_date', compact('events', 'date'));
+    }
+
+    //イベント詳細ページ
+    public function show($id)
+    {
+        $event = Event::findOrFail($id);
+        return view('events.show', compact('event'));
     }
 }
