@@ -6,12 +6,24 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+        <!-- 全体を1つのラッパーで囲む -->
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-4">
+
+            <!-- ログインメッセージ -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="text-gray-900">ログインしました！</div>
             </div>
+
+            <!-- イベントを探す -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <a href="{{ url('/calendar') }}" class="text-blue-600 hover:underline">イベントを探す</a>
+            </div>
+
+            <!-- 投稿する -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <a href="{{ url('/events/create') }}" class="text-green-600 hover:underline">祭りを投稿する</a>
+            </div>
+
         </div>
     </div>
 </x-app-layout>
