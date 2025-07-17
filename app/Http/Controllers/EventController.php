@@ -66,6 +66,56 @@ class EventController extends Controller
         return response()->json($events);
     }
 
+    public function edit($id)
+    {
+        $event = Event::findOrFail($id);
+        // 自分の投稿か確認（不正アクセス防止）
+        if ($event->user_id !== auth()->id()) {
+            abort(403);
+        }
+        return view('events.edit', compact('event'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $event = Event::findOrFail($id);
+
+        if ($event->user_id !== auth()->id()) {
+            abort(403);
+        }
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'prefecture' => 'required|string',
+            'location' => 'required|string',
+        ]);
+        $event->update($request->only([
+            'title',
+            'description',
+            'start_date',
+            'end_date',
+            'prefecture',
+            'location'
+        ]));
+
+        return redirect()->route('mypage')->with('success', 'イベントを更新しました。');
+    }
+
+    public function destroy($id)
+    {
+        $event = Event::findOrFail($id);
+
+        if ($event->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $event->delete();
+
+        return redirect()->route('mypage')->with('success', 'イベントを削除しました。');
+    }
+
     //詳細ページからカレンダーに戻る
     public function showCalendar()
     {

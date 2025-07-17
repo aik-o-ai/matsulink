@@ -65,4 +65,17 @@ class FestivalImageController extends Controller
 
         return view('festival_images.index', compact('event', 'images'));
     }
+    public function destroy($id)
+    {
+        $image = FestivalImage::findOrFail($id);
+
+        // ログインユーザー以外が削除しようとしたら弾く
+        if ($image->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized');
+        }
+
+        $image->delete();
+
+        return redirect()->route('mypage')->with('success', '画像を削除しました。');
+    }
 }

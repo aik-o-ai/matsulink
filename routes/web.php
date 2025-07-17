@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FestivalImageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MyPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,6 +64,17 @@ Route::get('/events/{event_id}/images', [FestivalImageController::class, 'index'
 
 Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
 
+//マイページ
+Route::middleware(['auth'])->group(function () {
+    Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
+    Route::get('/events/{id}/edit', [EventController::class, 'edit'])->name('events.edit');
+    Route::put('/events/{id}', [EventController::class, 'update'])->name('events.update');
+    Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
+
+    Route::delete('/festival_images/{id}', [FestivalImageController::class, 'destroy'])
+        ->middleware(['auth'])
+        ->name('festival_images.destroy');
+});
 
 
 require __DIR__ . '/auth.php';

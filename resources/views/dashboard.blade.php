@@ -9,10 +9,15 @@
         <!-- 全体を1つのラッパーで囲む -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-4">
 
+
             <!-- ログインメッセージ -->
+            <p class="text-gray-900 mb-4">ログインしました！</p>
+
+            <!-- マイページ -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <div class="text-gray-900">ログインしました！</div>
+                <a href="{{ url('/mypage') }}" class="text-purple-600 hover:underline">マイページ</a>
             </div>
+
 
             <!-- イベントを探す -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">

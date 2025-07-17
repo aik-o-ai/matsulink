@@ -18,10 +18,11 @@
 
     <div class="mb-4 text-right">
         <a href="{{ route('festival.create', ['event_id' => $event->id]) }}"
-            class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-2 px-4 rounded">
+            class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
             写真を追加
         </a>
     </div>
+
     <div class="flex flex-col gap-2 mb-8">
         <a href="{{ route('events.show', ['id' => $event->id]) }}" class="text-blue-600 hover:underline">
             ← 祭りの詳細ページに戻る
