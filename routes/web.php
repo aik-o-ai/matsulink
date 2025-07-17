@@ -4,6 +4,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\FestivalImageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,6 +75,15 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/festival_images/{id}', [FestivalImageController::class, 'destroy'])
         ->middleware(['auth'])
         ->name('festival_images.destroy');
+});
+
+//動画
+Route::prefix('events/{event}/videos')->group(function () {
+    Route::get('/', [VideoController::class, 'index'])->name('videos.index');
+    Route::get('/create', [VideoController::class, 'create'])->name('videos.create');
+    Route::post('/', [VideoController::class, 'store'])->name('videos.store');
+    Route::delete('/{id}', [VideoController::class, 'destroy'])->name('videos.destroy'); // 任意
+
 });
 
 

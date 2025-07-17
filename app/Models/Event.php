@@ -19,6 +19,7 @@ class Event extends Model
         'location',
         'latitude',
         'longitude',
+
     ];
 
     public function user()
@@ -29,5 +30,10 @@ class Event extends Model
     public function festivalImages()
     {
         return $this->hasMany(FestivalImage::class);
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
     }
 }

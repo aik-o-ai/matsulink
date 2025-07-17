@@ -6,17 +6,21 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             @foreach ($images as $image)
-            <div class="bg-white shadow-sm rounded-lg p-4 mb-4">
-                <h3 class="font-bold">{{ $image->title }}</h3>
-                <img src="{{ $image->image_url }}" alt="{{ $image->title }}" class="w-full max-w-md mt-2">
-            </div>
-            @endforeach
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+                <img src="{{ $image->image_url }}"
+                    alt="{{ $image->title }}"
+                    class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-2">
+                    <p class="text-right text-sm font-bold">{{ $image->title }}</p>
+                </div>
+            </div> @endforeach
         </div>
+
     </div>
 
-    <div class="mb-4 text-right">
+    <div class="mb-4 flex justify-end">
         <a href="{{ route('festival.create', ['event_id' => $event->id]) }}"
             class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
             写真を追加

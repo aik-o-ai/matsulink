@@ -11,13 +11,20 @@
         <p><strong>開催場所:</strong> {{ $event->location }}</p>
         <p><strong>概要:</strong><br>{{ $event->description }}</p>
     </div>
-    <div>
-        <a href="{{ route('events.images.index', ['event_id' => $event->id]) }}"
-            class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded border border-blue-700">
 
-            写真を見る
+
+    <div class="mt-6">
+        <a href="{{ route('events.images.index', ['event_id' => $event->id]) }}" class="text-black hover:underline">
+            ▶ 写真を見る
         </a>
     </div>
+
+    <div class="mt-6">
+        <a href="{{ route('videos.index', ['event' => $event->id]) }}" class="text-black hover:underline">
+            ▶ 動画を見る
+        </a>
+    </div>
+
     <div class="fixed bottom-4 left-4 z-50 flex flex-col gap-2">
         {{-- カレンダーに戻る --}}
         <a href="{{ route('calendar') }}" class="text-blue-600 hover:underline mt-4">

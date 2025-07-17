@@ -51,6 +51,27 @@
             </div>
             @endforeach
         </section>
+
+        {{-- 投稿した動画 --}}
+        <section class="bg-white p-6 rounded shadow">
+            <h3 class="text-lg font-bold mb-2">【投稿した動画】</h3>
+            @foreach ($videos as $video)
+            <div class="flex justify-between items-center border-b py-2">
+                <div>
+                    <a href="{{ $video->video_url }}" target="_blank" class="text-blue-700 hover:underline">
+                        {{ $video->title }}
+                    </a>
+                </div>
+                <form action="{{ route('videos.destroy', $video->id) }}" method="POST" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-red-600 hover:underline">削除</button>
+                </form>
+            </div>
+            @endforeach
+        </section>
+
+
     </div>
     <!-- 戻るリンク -->
     <div class="mb-8">

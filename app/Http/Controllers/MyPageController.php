@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
 use App\Models\FestivalImage;
+use App\Models\Video;
 
 class MyPageController extends Controller
 {
@@ -23,7 +24,11 @@ class MyPageController extends Controller
         //ユーザーが投稿した写真一覧
         $images = FestivalImage::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 
+        //ユーザーが投稿した動画一覧
+        $videos = Video::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+
+
         //マイページビューへデータを渡す
-        return view('mypage.index', compact('user', 'events', 'images'));
+        return view('mypage.index', compact('user', 'events', 'images',  'videos'));
     }
 }
