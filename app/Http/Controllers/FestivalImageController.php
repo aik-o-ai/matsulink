@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FestivalImage;
+use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary\Cloudinary; //use宣言
 
@@ -16,10 +17,13 @@ class FestivalImageController extends Controller
 
     public function store(Request $request, FestivalImage $festivalImage)
     {
+
+
         // バリデーション
         $request->validate([
             'title' => 'required|string|max:255',
             'image' => 'required|image|max:4096',
+            'event_id' => 'required|exists:events,id',
 
         ]);
         // Cloudinaryアップロード
@@ -50,6 +54,15 @@ class FestivalImageController extends Controller
         $festivalImage->fill($input)->save();
 
 
-        return redirect('/festival_images/' . $festivalImage->id);
+        // 画像一覧ページへリダイレクト（例: /events/{event_id}/images）
+        return redirect()->route('events.images.index', ['event_id' => $request->input('event_id')])
+            ->with('success', '画像をアップロードしました');
+    }
+    public function index($event_id)
+    {
+        $event = Event::findOrFail($event_id);
+        $images = FestivalImage::where('event_id', $event_id)->get();
+
+        return view('festival_images.index', compact('event', 'images'));
     }
 }

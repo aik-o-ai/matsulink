@@ -65,7 +65,7 @@
         </form>
 
         <div class="mt-4">
-            <a href="{{ route('dashboard') }}" class="text-blue-600 hover:underline">戻る</a>
+            <a href="{{ route('dashboard') }}" class="text-blue-600 hover:underline">←戻る</a>
         </div>
     </div>
 </x-app-layout>

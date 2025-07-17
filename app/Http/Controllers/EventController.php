@@ -65,4 +65,10 @@ class EventController extends Controller
 
         return response()->json($events);
     }
+
+    //詳細ページからカレンダーに戻る
+    public function showCalendar()
+    {
+        return view('calendars.calendar');
+    }
 }

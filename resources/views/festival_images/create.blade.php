@@ -20,7 +20,7 @@
             @csrf
 
             <!-- 紐づけるイベントID -->
-            <input type="hidden" name="festival_id" value="{{ $event_id }}">
+            <input type="hidden" name="event_id" value="{{ $event_id }}">
 
             <div class="mb-4">
                 <label for="title" class="block font-medium text-sm text-gray-700">タイトル</label>
@@ -33,12 +33,12 @@
             </div>
 
             <div class="mt-4">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">投稿する</button>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">写真をアップロード</button>
             </div>
         </form>
 
         <div class="mt-4">
-            <a href="{{ route('dashboard') }}" class="text-blue-600 hover:underline">戻る</a>
+            <a href="{{ route('events.images.index', ['event_id' => $event_id]) }}" class="text-blue-600 hover:underline">←写真一覧に戻る</a>
         </div>
     </div>
 </x-app-layout>

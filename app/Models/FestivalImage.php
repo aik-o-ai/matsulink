@@ -15,4 +15,14 @@ class FestivalImage extends Model
         'title',
         'image_url',
     ];
+
+    public function event()
+    {
+        return $this->belongTo(Event::class);
+    }
+
+    public function user()
+    {
+        return $this->belongTo(User::class);
+    }
 }

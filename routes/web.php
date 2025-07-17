@@ -45,6 +45,7 @@ Route::middleware('auth')->controller(FestivalImageController::class)->group(fun
 //日付別一覧
 Route::get('/events/date/{date}', [EventController::class, 'listByDate'])->name('events.byDate');
 
+
 //イベント詳細ページ
 Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
 
@@ -52,6 +53,15 @@ Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show'
 Route::get('/calendar', [EventController::class, 'calendar'])->name('calendar.show');
 Route::get('/calendar/get', [EventController::class, 'get'])->name('calendar.get');
 Route::post('/calendar/get', [EventController::class, 'get'])->name('calendar.get');
+Route::get('/calendar', [EventController::class, 'showCalendar'])->name('calendar');
+
+
+//写真一覧ページへ
+Route::get('/events/{event_id}/images', [FestivalImageController::class, 'index'])
+    ->name('events.images.index')
+    ->middleware(['auth']);
+
+Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
 
 
 
