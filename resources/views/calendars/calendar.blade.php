@@ -7,13 +7,15 @@
 
     <div class="py-6 max-w-7xl mx-auto">
         <div id="calendar"></div>
+        <p>
+            <a href="{{ route('dashboard') }}" class="inline-block bg-gray-100 hover:bg-gray-200 text-blue-600 font-semibold py-2 px-4 rounded mb-4">
+                ←戻る
+            </a>
+
+        </p>
     </div>
 
-    <div class="px-4 py-2">
-        <a href="{{ route('dashboard') }}" class="inline-block bg-gray-100 hover:bg-gray-200 text-blue-600 font-semibold py-2 px-4 rounded">
-            ←戻る
-        </a>
-    </div>
+
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </x-app-layout>

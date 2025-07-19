@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 gap-4">
             @foreach ($images as $image)
             <div class="bg-white shadow rounded-lg overflow-hidden">
                 <img src="{{ $image->image_url }}"
@@ -27,7 +27,7 @@
         </a>
     </div>
 
-    <div class="flex flex-col gap-2 mb-8">
+    <div class="px-4 py-2">
         <a href="{{ route('events.show', ['id' => $event->id]) }}" class="text-blue-600 hover:underline">
             ← 祭りの詳細ページに戻る
         </a>

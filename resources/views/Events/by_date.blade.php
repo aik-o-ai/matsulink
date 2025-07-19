@@ -15,11 +15,14 @@
         @empty
         <p>この日に登録された祭りはありません。</p>
         @endforelse
+        {{-- 戻るリンク --}}
+        <div class="mt-8">
+            <a href="{{ route('calendar') }}" class="text-blue-600 hover:underline">
+                ← カレンダーに戻る
+            </a>
+        </div>
+
+
     </div>
-    <div class="fixed bottom-4 left-4 z-50 flex flex-col gap-2">
-        {{-- カレンダーに戻る --}}
-        <a href="{{ route('calendar') }}" class="text-blue-600 hover:underline mt-4">
-            ← カレンダーに戻る
-        </a>
 
 </x-app-layout>

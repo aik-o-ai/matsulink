@@ -90,6 +90,8 @@ class EventController extends Controller
             'end_date' => 'required|date|after_or_equal:start_date',
             'prefecture' => 'required|string',
             'location' => 'required|string',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
         $event->update($request->only([
             'title',
@@ -97,7 +99,9 @@ class EventController extends Controller
             'start_date',
             'end_date',
             'prefecture',
-            'location'
+            'location',
+            'latitude',
+            'longitude',
         ]));
 
         return redirect()->route('mypage')->with('success', 'イベントを更新しました。');

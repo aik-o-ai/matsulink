@@ -51,12 +51,12 @@
 
             <div class="mb-4">
                 <label for="latitude" class="block font-medium text-sm text-gray-700">緯度</label>
-                <input type="number" step="0.0000001" name="latitude" id="latitude" class="border rounded w-full p-2" value="{{ old('latitude') }}" required>
+                <input type="text" name="latitude" id="latitude" class="border rounded w-full p-2" value="{{ old('latitude') }}" required>
             </div>
 
             <div class="mb-4">
                 <label for="longitude" class="block font-medium text-sm text-gray-700">経度</label>
-                <input type="number" step="0.0000001" name="longitude" id="longitude" class="border rounded w-full p-2" value="{{ old('longitude') }}" required>
+                <input type="text" name="longitude" id="longitude" class="border rounded w-full p-2" value="{{ old('longitude') }}" required>
             </div>
 
             <div class="mt-4">
