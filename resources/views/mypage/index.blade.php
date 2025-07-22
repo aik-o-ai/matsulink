@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 max-w-4xl mx-auto space-y-10">
+    <div class="py-12 max-w-4xl mx-auto space-y-5">
         {{-- プロフィール --}}
         <section class="bg-white p-6 rounded shadow mb-4">
             <h3 class="text-lg font-bold mb-4">【プロフィール】</h3>

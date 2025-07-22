@@ -15,18 +15,18 @@
 
             <!-- マイページ -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <a href="{{ url('/mypage') }}" class="text-purple-600 hover:underline">マイページ</a>
+                <a href="{{ url('/mypage') }}" class="text-gray-900 hover:underline">マイページ</a>
             </div>
 
 
             <!-- イベントを探す -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <a href="{{ url('/calendar') }}" class="text-blue-600 hover:underline">イベントを探す</a>
+                <a href="{{ url('/calendar') }}" class="text-green-600 hover:underline">イベントを探す</a>
             </div>
 
             <!-- 投稿する -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <a href="{{ url('/events/create') }}" class="text-green-600 hover:underline">祭りを投稿する</a>
+                <a href="{{ url('/events/create') }}" class="text-blue-600 hover:underline">祭りを投稿する</a>
             </div>
 
         </div>
