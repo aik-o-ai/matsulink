@@ -15,7 +15,7 @@
             <h3 class="font-bold text-lg mb-2">地図</h3>
             <div class="w-full h-64">
                 <iframe
-                    width="50%"
+                    width="100%"
                     height="100%"
                     frameborder="0"
                     style="border:0"
