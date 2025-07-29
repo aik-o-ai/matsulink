@@ -60,8 +60,7 @@
                 <a href="{{ $video->video_url }}" target="_blank" class="text-blue-700 hover:underline">
                     {{ $video->title }}
                 </a>
-                <form action="{{ route('videos.destroy', $video->id) }}" method="POST" class="inline">
-                    @csrf
+                <form action="{{ route('videos.destroy', ['event' => $video->event_id, 'id' => $video->id]) }}" method="POST" class="inline"> @csrf
                     @method('DELETE')
                     <button type="submit" class="text-red-600 hover:underline">削除</button>
                 </form>
