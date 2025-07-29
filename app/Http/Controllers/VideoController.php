@@ -44,10 +44,9 @@ class VideoController extends Controller
     }
 
     // 動画の削除
-    public function destroy($id)
+    public function destroy($event_id, $id)
     {
-        $video = Video::findOrFail($id);
-        $event_id = $video->event_id;
+        $video = Video::where('id', $id)->where('event_id', $event_id)->firstOrFail();
         $video->delete();
 
         return redirect()->route('videos.index', ['event' => $event_id])
