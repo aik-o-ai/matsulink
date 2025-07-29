@@ -34,6 +34,7 @@ class VideoController extends Controller
 
         Video::create([
             'event_id' => $event_id,
+            'user_id' => auth()->id(),
             'title' => $request->title,
             'video_url' => $request->video_url,
         ]);

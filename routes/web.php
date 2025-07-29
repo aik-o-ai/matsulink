@@ -78,13 +78,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //動画
-Route::prefix('events/{event}/videos')->group(function () {
+Route::middleware('auth')->prefix('events/{event}/videos')->group(function () {
     Route::get('/', [VideoController::class, 'index'])->name('videos.index');
     Route::get('/create', [VideoController::class, 'create'])->name('videos.create');
     Route::post('/', [VideoController::class, 'store'])->name('videos.store');
-    Route::delete('/{id}', [VideoController::class, 'destroy'])->name('videos.destroy'); // 任意
-
+    Route::delete('/{id}', [VideoController::class, 'destroy'])->name('videos.destroy');
 });
-
 
 require __DIR__ . '/auth.php';
